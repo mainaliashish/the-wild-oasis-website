@@ -2,8 +2,17 @@ import { Suspense } from "react";
 import CabinList from "@/app/_components/CabinList";
 import Spinner from "@/app/_components/Spinner";
 
+/*
+  -> should be some exact value in seconds
+  -> fetch fresh data after every 1 hour (60 * 60)
+  -> page regeneration
+  -> refetching at route level
+*/
+
+export const revalidate = 3600;
+
 export const metadata = {
-  title: "Cabins Page",
+  title: "Cabins",
 };
 
 export default function Page() {
