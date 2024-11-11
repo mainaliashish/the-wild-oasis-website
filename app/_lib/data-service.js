@@ -12,9 +12,6 @@ export async function getCabin(id) {
     .eq("id", id)
     .single();
 
-  // For testing
-  // await new Promise((res) => setTimeout(res, 1000));
-
   if (error) {
     console.error(error);
   }
@@ -42,7 +39,9 @@ export const getCabins = async function () {
     .from("cabins")
     .select("id, name, maxCapacity, regularPrice, discount, image")
     .order("name");
-
+  // For testing
+  // make result to wait 3 seconds
+  // await new Promise((res) => setTimeout(res, 3000));
   if (error) {
     console.error(error);
     throw new Error("Cabins could not be loaded");
