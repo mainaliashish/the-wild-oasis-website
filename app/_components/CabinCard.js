@@ -12,6 +12,7 @@ function CabinCard({ cabin }) {
           src={image}
           fill
           quality={100}
+          sizes="auto"
           alt={`Cabin ${name}`}
           className="object-cover border-r border-primary-800 relative"
         />
