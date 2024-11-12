@@ -2,6 +2,7 @@ import { getCabin, getCabins } from "@/app/_lib/data-service";
 import { EyeSlashIcon, MapPinIcon, UsersIcon } from "@heroicons/react/24/solid";
 import TextExpander from "@/app/_components/TextExpander";
 import Image from "next/image";
+import Reservation from "@/app/_components/Reservation";
 
 // export const metadata = {
 //   title: "Cabin Detail",
@@ -10,6 +11,12 @@ import Image from "next/image";
 // Dynamic Meta Data
 export async function generateMetadata({ params }) {
   const { name } = await getCabin(params.cabinId);
+
+  // const [cabin, settings, bookedDates] = Promise.all([
+  //   getCabin(params.cabinId),
+  //   getSettings(),
+  //   getBookedDatesByCabinId(params.cabinId),
+  // ]);
 
   return {
     title: `Cabin ${name}`,
@@ -78,9 +85,10 @@ export default async function Page({ params }) {
       </div>
 
       <div>
-        <h2 className="text-5xl font-semibold text-center">
-          Reserve today. Pay on arrival.
+        <h2 className="text-5xl font-semibold text-center mb-10 text-accent-300">
+          Reserve {name} today. Pay on arrival.
         </h2>
+        <Reservation />
       </div>
     </div>
   );
