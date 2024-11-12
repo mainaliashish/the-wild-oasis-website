@@ -3,6 +3,8 @@ import { EyeSlashIcon, MapPinIcon, UsersIcon } from "@heroicons/react/24/solid";
 import TextExpander from "@/app/_components/TextExpander";
 import Image from "next/image";
 import Reservation from "@/app/_components/Reservation";
+import { Suspense } from "react";
+import Spinner from "@/app/_components/Spinner";
 
 // export const metadata = {
 //   title: "Cabin Detail",
@@ -88,7 +90,9 @@ export default async function Page({ params }) {
         <h2 className="text-5xl font-semibold text-center mb-10 text-accent-300">
           Reserve {name} today. Pay on arrival.
         </h2>
-        <Reservation />
+        <Suspense fallback={<Spinner />}>
+          <Reservation cabin={cabin} />
+        </Suspense>
       </div>
     </div>
   );

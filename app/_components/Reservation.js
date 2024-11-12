@@ -2,15 +2,15 @@ import DateSelector from "@/app/_components/DateSelector";
 import ReservationForm from "@/app/_components/ReservationForm";
 import { getBookedDatesByCabinId, getSettings } from "@/app/_lib/data-service";
 
-export default function Reservation() {
-  const [settings, bookedDates] = Promise.all([
+export default async function Reservation({ cabin }) {
+  const [settings, bookedDates] = await Promise.all([
     getSettings(),
-    getBookedDatesByCabinId(params.cabinId),
+    getBookedDatesByCabinId(cabin.id),
   ]);
   return (
     <div className="grid grid-cols-[5fr_3fr] border border-primary-800 min-h-[400px]">
-      <DateSelector />
-      <ReservationForm />
+      <DateSelector settings={settings} />
+      <ReservationForm bookedDates={bookedDates} cabin={cabin} />
     </div>
   );
 }
